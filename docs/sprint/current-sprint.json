@@ -1,9 +1,9 @@
 {
   "id": "2026-07-08-ai-lawyers-site",
-  "status": "dev-complete",
-  "current_role": "qa",
-  "locked_by": "claude-code:qa",
-  "locked_at": "2026-07-08T11:09:30Z",
-  "last_agent": "claude-code:developer",
-  "last_updated": "2026-07-08T11:09:30Z"
+  "status": "review",
+  "current_role": "planner",
+  "locked_by": null,
+  "locked_at": null,
+  "last_agent": "claude-code:manager",
+  "last_updated": "2026-07-08T11:20:40Z"
 }
