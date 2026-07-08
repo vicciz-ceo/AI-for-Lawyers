@@ -1,15 +1,15 @@
 ---
 id: "2026-07-08-ai-lawyers-site"
-status: review
-current_role: planner
+status: planned
+current_role: developer
 branch: sprint/2026-07-08-ai-lawyers-site
 locked_by: null
 locked_at: null
-last_agent: "claude-code:qa"
-last_updated: 2026-07-08T10:24:00Z
+last_agent: "claude-code:planner"
+last_updated: 2026-07-08T11:02:50Z
 evaluator: custom
 evaluator_command: "bash tests/run_checks.sh"
-total_items: 3
+total_items: 5
 completed_items: 3
 dev_complete_items: 0
 qa_cycles: 1
@@ -19,9 +19,45 @@ design_sections:
   - sources/AI-for-Lawyers-Landing.dc.html
 ---
 
+## Round 2 (reopened 2026-07-08)
+
+Director requested a small copy change after all 3 original items shipped
+and passed QA. This is NOT a new feature — it's a content-only fix across
+the two already-completed deliverables (`index.html`, `syllabus/**`).
+Items 1-3 below (Completed) are untouched and still verified by Gates 1-3.
+Items 4-5 are new; Gate 5 (`tests/check-copy-change.mjs`) pins them and is
+currently RED (confirmed genuinely red — see Evaluation Notes).
+
 ## Next Steps
 
-(none — all 3 items QA-passed, sprint in review)
+### Item 4 — Gate A: remove unfounded popularity / social-proof claims
+The business has had no sales yet, so nothing may be called "popular" or
+"the choice of most firms."
+- **Acceptance:** zero occurrences of substring `פופולר` in `index.html`
+  and every `syllabus/*.md`; zero occurrences of the phrase `הבחירה של
+  רוב המשרדים` in the same file set (see Context Dump — this phrase
+  exists in TWO places, not just the one the brief called out).
+- **Files affected:** `index.html` (half-day pricing card, ~line 674),
+  `syllabus/half-day.md` (lines 3, 7), `syllabus/README.md` (line 10).
+- **Check:** `tests/check-copy-change.mjs`, checks 1-18 (Gate 5).
+- Reword the half-day card's `הבחירה של רוב המשרדים.` to a truthful
+  value statement — do NOT assert existing customers/adoption.
+
+### Item 5 — Gate B: "labs" (מעבדה/מעבדות) -> "workshops" (סדנה/סדנאות)
+`מעבדה`/`מעבדות` reads as a science laboratory; replace with
+`סדנה`/`סדנאות` everywhere.
+- **Acceptance:** zero occurrences of substring `מעבד` in `index.html`
+  and every `syllabus/*.md`.
+- **Files affected:** `index.html:674`; `syllabus/README.md:10`;
+  `syllabus/full-day.md` (×3); `syllabus/90-min-baby-steps.md:52`;
+  `syllabus/half-day.md` (×4, incl. lines 3, 15, 34, 69).
+- **Constraint:** the required heading `תרגול מעשי` ("hands-on
+  practice") in every syllabus content doc STAYS UNCHANGED — it is a
+  distinct concept, contains no `מעבד` substring, and is pinned by
+  `tests/check-syllabus.mjs:36`. Do not touch that check or heading.
+- **Check:** `tests/check-copy-change.mjs`, checks 19-28 (Gate 5),
+  incl. a scoped positive pin (#28) that the half-day card specifically
+  now reads `סדנאות` in place of `מעבדות`.
 
 ## Dev Complete
 
@@ -115,83 +151,80 @@ planner`, `qa_cycles: 1`. No deviations from the brief. No escalations.
 
 ## Context Dump
 
-**Curriculum source of truth:** `sources/AI-for-Lawyers-Workshop-Curriculum.md`.
-54 modules across tracks A–J (A1–A3, B1–B8, C1–C4, D1–D6, E1–E5, F1–F5,
-G1–G7, H1–H4, I1–I8, J1–J4) — verified by parsing `**{code}.` headers; see
-`tests/checks.mjs` check #1 for the live derivation (never hand-maintain
-this list — the script re-parses the source every run). Section 3 defines
-the format→track mapping and the by-segment weighting used above and in
-the tests.
+**Round 2 scope — this replaces the prior context dump.** The original
+Items 1-3 are done, QA-verified, and untouched by this round; their old
+context (curriculum parsing, `.dc` source mapping, accent color, email
+de-obfuscation, filter wiring) is no longer relevant to the current work
+and has been dropped. What follows is everything the Developer needs for
+Items 4-5 only.
 
-**Where the landing-page module data lives:** `sources/AI-for-Lawyers-Landing.dc.html`
-has all 54 modules (Hebrew title + blurb per code) already written out as a
-plain JS array inside the `<script type="text/x-dc" data-dc-script ...>`
-block (search for `class Component extends DCLogic` → `curriculum = [ ... ]`,
-lines ~236–311). Each track entry has `{ letter, he, en, short, modules: [{code, title, blurb}, ...] }`.
-This is the actual content to lift into static cards — do not rewrite the
-Hebrew copy, just de-templatize the rendering. The rest of the page
-(hero, "who it's for", safety section, pricing section, CTA, footer) is
-already static-ish HTML with inline styles; only the curriculum-cards
-section (`<section id="curriculum">`) and the filter buttons use
-`<sc-for>`/`<sc-if>`. Prices come from `renderVals()`'s `prices` object —
-already resolved to the literal strings this sprint requires
-(`showPrices` defaults true, so use the non-`q` branch values).
+**Exact strings to remove/replace — Gate A (popularity/social-proof):**
+- `index.html` line ~674, the half-day pricing card (find it via the
+  unique anchor text `A · B · D · I`): contains badge text `הפופולרי`
+  and, in the card's description paragraph, `...עם מעבדות מעשיות. הבחירה
+  של רוב המשרדים.` — remove `הפופולרי` badge content (replace with
+  something else or drop the badge; see below), and reword the trailing
+  `הבחירה של רוב המשרדים.` sentence to a truthful value statement (e.g.
+  emphasize what participants walk away with — do NOT claim existing
+  customers/adoption/market share, since there have been no sales yet).
+- `syllabus/half-day.md` line 3: `*הכשרת AI לעורכי דין · הפורמט הפופולרי
+  ביותר, עם מעבדות מעשיות*` — drop `הפופולרי ביותר` phrasing.
+- `syllabus/half-day.md` line 7 (target-audience section opener):
+  `הבחירה של רוב המשרדים: קבוצה שכבר מבינה...` — **this is a SECOND,
+  separate occurrence of the same social-proof phrase** that the
+  director's ask didn't explicitly call out by file (it only mentioned
+  "index.html's half-day pricing card"), but it is the same unfounded
+  claim and Gate 5's checks assert its absence in both files, so it must
+  be reworded too (e.g. describe the target audience directly — "קבוצה
+  שכבר מבינה שהיא רוצה להשתמש בכלי AI..." without the "most firms"
+  framing).
+- `syllabus/README.md` line 10: `...המסלול המעשי הפופולרי ביותר...` —
+  drop `הפופולרי ביותר`.
 
-**Accent color decision:** use `#6D28D9` (this is the `.dc` file's own
-declared `default` for `accentColor` in the `data-props` JSON on the
-`<script type="text/x-dc">` tag — not the inline CSS fallback `#3A31E0`
-scattered through `var(--accent,#3A31E0)`). Simplest correct fix: set
-`--accent:#6D28D9` on the root `<div dir="rtl" ...>` (replacing the
-`{{ accent }}` token) and leave every `var(--accent, #3A31E0)` usage as-is
-— the CSS custom property will resolve to `#6D28D9` and the inline
-fallback becomes dead code, which is fine.
+**Grammar mapping — Gate B (labs → workshops):** מעבדה (singular) →
+סדנה; מעבדות (plural) → סדנאות. Apply this substitution wherever `מעבד`
+appears, adjusting adjective agreement as needed, e.g.:
+- `מעבדות מעשיות` → `סדנאות מעשיות` (index.html:674, half-day.md:3)
+- `עם מעבדה` → `עם סדנה` (half-day.md:34, "מסלול B: ... (עם מעבדה)")
+- `מעבדה מלאה` → `סדנה מלאה` (90-min-baby-steps.md:52)
+- `שלוש מעבדות רצופות` → `שלוש סדנאות רצופות` (full-day.md:79)
+- `(מעבדה)` parenthetical labels after track names → `(סדנה)`
+  (full-day.md, two occurrences: מסלול E and מסלול F blocks)
+- `במעבדות` / `מעבדות אפקטיביות` / `מהמעבדה` → `בסדנאות` /
+  `סדנאות אפקטיביות` / `מהסדנה`, etc. — the pattern is mechanical
+  (מעבד- stem → סדנ- with matching gender/number suffix), just don't
+  do a blind find-replace of the bare 4-letter stem without checking
+  each match reads naturally in context.
+- Full known occurrence list (from the Planner's sweep — re-grep to be
+  sure nothing was missed): `index.html:674`; `syllabus/README.md:10`;
+  `syllabus/full-day.md` lines 15, 58, 63, 79; `syllabus/90-min-baby-
+  steps.md:52`; `syllabus/half-day.md` lines 3, 15, 34, 69.
 
-**Contact email:** replace the Cloudflare-obfuscated footer span
-(`<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="...">[email protected]</a>`)
-with plain text `nerya@nerya.io`. Also remove the
-`<script data-cfasync="false" src="/cdn-cgi/scripts/.../email-decode.min.js">`
-tag entirely — it's dead weight once the address is plain text, and its
-`/cdn-cgi/` path is itself a forbidden artifact per the checks.
-
-**data-track / data-filter contract the tests expect:** every rendered
-module card must carry `data-track="{trackLetter}"` (e.g. `data-track="B"`
-for all 8 B-modules, not per-code). Every filter button must carry
-`data-filter="{trackLetter}"` for A–J, plus one button with
-`data-filter="all"`. The tests do not dictate *how* filtering is wired
-(inline `onclick`, `addEventListener`, event delegation, etc.) — only that
-these data attributes exist so JS can query against them. The `.dc` source's
-own `renderVals()` gives the exact filter semantics to replicate (show a
-module's card only if `activeTrack == null || activeTrack === card.letter`).
-
-**Head/`<script src="./support.js">` and other template plumbing to drop:**
-the `<head>` script tag, the `<x-dc>` / `</x-dc>` wrapper (unwrap its
-contents into `<body>`), every `<sc-for>`/`<sc-if>` block (replace with
-literal repeated markup for the 54 cards and 11 filter buttons), and the
-entire `<script type="text/x-dc" ...>...</script>` block at the bottom
-(its data has already been lifted into static markup, so it must not
-remain in the shipped file — its mere presence is a forbidden artifact).
+**DO NOT touch:** the required heading `תרגול מעשי` ("hands-on
+practice") in every syllabus content doc. It is a distinct concept (it
+means hands-on practice generally, not specifically a lab session), it
+contains no `מעבד` substring at all, and it is pinned by an existing
+check at `tests/check-syllabus.mjs:36`. Leave that heading and that
+check exactly as-is.
 
 **How to run the checks:** `bash tests/run_checks.sh` from repo root
-(needs `node` on PATH; confirmed present, v24.13.0). It's a thin wrapper
-around `tests/checks.mjs` (Node stdlib only, no npm installs). Output is
-numbered `[PASS]`/`[FAIL]` lines grouped by gate (§0 meta, §1 syllabus,
-§2 landing page, §3 deploy config) plus a final `SUMMARY: X/Y passed`
-line; exit code 0 iff all pass. Current state (before Item 1–3 land):
-102/103 failing, only check #1 (the meta curriculum-parse sanity check)
-passes since it only reads the pre-existing curriculum source. This was
-verified genuinely RED (ENOENT-driven failures, not script bugs) and,
-separately, verified achievable-GREEN against hand-built fixtures with
-correct structure (103/103 passed) — so the checks are not impossible to
-satisfy.
+(needs `node` on PATH; confirmed present). Node stdlib only, no npm
+installs. New Gate 5 (`tests/check-copy-change.mjs`) is checks belonging
+to `GATE 5 SUMMARY` in the output; as of this contract update it is
+17/28 passing (11 genuinely failing on the strings listed above). Gates
+1-4 (the pre-existing 115 checks) must stay green — do not edit any
+`tests/*.mjs` file; that's the Planner's/QA's job, not Developer's.
+Gate 5 includes one scoped positive pin (check #28) requiring the
+half-day card specifically to read `סדנאות` in place of `מעבדות` right
+after the `A · B · D · I` anchor — a blind removal without adding the
+replacement word there will leave that one check red.
 
-**Interactive behavior — QA's job, not covered by these checks:** the
-checks only verify markup/attribute structure (card counts, data-*
-attributes present, forbidden strings absent). They do NOT click filter
-buttons or assert that clicking `data-filter="B"` actually hides non-B
-cards in a real browser — QA must verify that manually/via browser
-automation.
-
-**Stale-pin sweep:** N/A — brand-new repo (this is the first commit-bearing
-branch besides the scaffold commit), no renames or moved files to chase.
+**Stale-pin sweep (done by Planner):** confirmed no existing check in
+`tests/*.mjs` pins `הפופולרי`, `הבחירה של רוב המשרדים`, or `מעבד` —
+grepped the whole `tests/` directory, zero hits outside the new
+`check-copy-change.mjs`. `check-syllabus.mjs:36` pins `תרגול מעשי`
+only (label string "hands-on labs" is just an English description in
+the test's own output, not a Hebrew string being matched — irrelevant
+to this change). No renames to chase this round.
 
 **No git stash used at any point in this sprint's Planner phase.**
