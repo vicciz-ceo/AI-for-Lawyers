@@ -99,4 +99,42 @@ check('index.html half-day pricing card (anchored at "A · B · D · I") now rea
   };
 });
 
+// ---------------------------------------------------------------------
+// Structural regression pin (QA-added): the half-day pricing card must
+// not have regrown a leftover floating badge element (a position:absolute
+// child) where the removed "הפופולרי" pill used to sit. A future edit
+// that swaps in a *different* badge (different wording, e.g. a
+// re-translated or re-worded claim) would slip past checks 1-2 and 28
+// above (which only look for specific strings) but would still violate
+// the director's ask to drop the badge entirely. This pins the
+// *structural* absence of any absolutely-positioned element, scoped to
+// just the half-day card block (from its gradient-background opening tag
+// to the next card's "FULL DAY" label), so it does not false-positive on
+// other legitimately-absolutely-positioned elements elsewhere on the page.
+// ---------------------------------------------------------------------
+check('index.html half-day pricing card has no leftover floating badge element (no position:absolute inside the card)', () => {
+  const t = readText(indexPath);
+  const anchor = 'A · B · D · I';
+  const idx = t.indexOf(anchor);
+  if (idx === -1) return { pass: false, detail: 'anchor "A · B · D · I" not found on page' };
+  const cardStartMarker = 'background:linear-gradient(160deg';
+  const cardStart = t.lastIndexOf(cardStartMarker, idx);
+  if (cardStart === -1) {
+    return { pass: false, detail: 'half-day card gradient-background opening tag not found before anchor' };
+  }
+  const nextCardMarker = 'FULL DAY';
+  const nextCardIdx = t.indexOf(nextCardMarker, idx);
+  if (nextCardIdx === -1) {
+    return { pass: false, detail: '"FULL DAY" (next card) marker not found after anchor — cannot scope card end' };
+  }
+  const cardHtml = t.slice(cardStart, nextCardIdx);
+  const hasAbsolute = cardHtml.includes('position:absolute');
+  return {
+    pass: !hasAbsolute,
+    detail: hasAbsolute
+      ? 'found a position:absolute element inside the half-day card (possible leftover/regrown badge)'
+      : 'no position:absolute element inside the half-day card',
+  };
+});
+
 process.exit(summarize('GATE 5 SUMMARY'));
