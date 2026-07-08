@@ -21,23 +21,6 @@ design_sections:
 
 ## Next Steps
 
-### Item 2 — Static landing page (index.html)
-Derive a self-contained `index.html` at repo root from
-`sources/AI-for-Lawyers-Landing.dc.html`, resolving all template artifacts
-into static markup + vanilla-JS filtering. **Acceptance:** zero template
-artifacts (`{{`, `sc-for`/`sc-if`/`x-dc`, `support.js`, `/cdn-cgi/`,
-`text/x-dc`, Cloudflare email obfuscation) remain; all 54 module cards
-render with `data-track="{letter}"` (counts per track must match the
-curriculum, e.g. 3 for A, 8 for B, 8 for I…); filter buttons
-`data-filter="A"`…`data-filter="J"` plus `data-filter="all"`; all 54 codes
-(A1…J4) appear as literal text; prices `₪4,500` / `מ־₪9,500` / `מ־₪16,000` /
-`מ־₪48,000` rendered literally; `--accent:#6D28D9` set on the root div;
-plain-text email `nerya@nerya.io`; `dir="rtl"` + `lang="he"` preserved; a
-`@media (max-width: ...)` block exists. **Files:** `index.html`. Verify:
-`bash tests/run_checks.sh` §2 (checks 68–99). Note: actual click-driven
-filter behavior is QA's job in a browser — these checks only verify
-structure (attributes/markup), not runtime interactivity.
-
 ### Item 3 — Pages deployment config
 Add `CNAME` (root) with content exactly `lawyers.nerya.io`, and an empty
 `.nojekyll` (root). **Acceptance:** both files exist; `CNAME` content is
@@ -60,6 +43,10 @@ Files: `syllabus/README.md`, `syllabus/90-min-baby-steps.md`,
 `syllabus/segment-litigation.md`, `syllabus/segment-in-house.md`.
 Commit: `984394d`. Result: `bash tests/run_checks.sh` Gate 1 (checks 1–67)
 = 67/67 passed.
+
+### Item 2 — Static landing page (index.html)
+Files: `index.html`. Commit: `51b8eb5`. Result: `bash tests/run_checks.sh`
+Gate 2 (checks 68–99) = 32/32 passed.
 
 ## Completed
 
