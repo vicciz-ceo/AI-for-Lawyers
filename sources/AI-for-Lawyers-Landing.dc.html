@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&amp;family=Assistant:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:#F4F3EF;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  h1,h2,h3,p{text-wrap:pretty;}
+  a{color:inherit;text-decoration:none;transition:opacity .18s ease,color .18s ease;}
+  a:hover{opacity:.7;}
+  ::selection{background:color-mix(in oklab,var(--accent,#3A31E0) 30%,transparent);}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</helmet>
+<div dir="rtl" lang="he" data-screen-label="עמוד נחיתה" style="background:#F4F3EF;color:#17181C;font-family:'Assistant',sans-serif;min-height:100vh;overflow-x:hidden;--accent:{{ accent }};">
+
+  <!-- header -->
+  <header style="position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:15px 40px;border-bottom:1px solid rgba(20,22,30,.08);background:rgba(244,243,239,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="width:36px;height:36px;border-radius:11px;background:var(--accent,#3A31E0);display:grid;place-items:center;color:#fff;font-weight:800;font-size:18px;font-family:'Rubik',sans-serif;">נ</div>
+      <div style="line-height:1.15;">
+        <div style="font-weight:700;font-size:15px;font-family:'Rubik',sans-serif;">נריה רטיג</div>
+        <div dir="ltr" style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;color:#8B90A0;">NERYA RETTIG · AI ADV.</div>
+      </div>
+    </div>
+    <nav style="display:flex;gap:24px;align-items:center;font-size:14.5px;color:#3B404C;font-weight:500;">
+      <a href="#firms">למשרדים גדולים</a>
+      <a href="#curriculum">התוכנית</a>
+      <a href="#safety">בטיחות</a>
+      <a href="#formats">תמחור</a>
+      <a href="https://wa.me/972539230470?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%A0%D7%A8%D7%99%D7%94%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%96%D7%9E%D7%A0%D7%AA%20%D7%94%D7%9B%D7%A9%D7%A8%D7%AA%20AI%20%D7%9C%D7%9E%D7%A9%D7%A8%D7%93%20%D7%A9%D7%9C%D7%A0%D7%95." target="_blank" rel="noopener noreferrer" style="background:var(--accent,#3A31E0);color:#fff;font-weight:700;padding:9px 18px;border-radius:9px;">הכשרת AI</a>
+    </nav>
+  </header>
+
+  <!-- hero -->
+  <section style="position:relative;overflow:hidden;padding:100px 40px 88px;">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(780px 480px at 86% 4%,color-mix(in oklab,var(--accent,#3A31E0) 26%,transparent),transparent 60%),radial-gradient(560px 400px at 2% 34%,color-mix(in oklab,var(--accent,#3A31E0) 9%,transparent),transparent 66%);"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;opacity:.5;background-image:linear-gradient(rgba(20,22,30,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,30,.045) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(720px 520px at 82% 0%,#000,transparent 74%);mask-image:radial-gradient(720px 520px at 82% 0%,#000,transparent 74%);"></div>
+    <div style="position:relative;max-width:1180px;margin:0 auto;">
+      <div dir="ltr" style="display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;color:var(--accent,#3A31E0);background:color-mix(in oklab,var(--accent,#3A31E0) 12%,#fff);padding:7px 14px;border-radius:999px;margin-bottom:26px;animation:fadeUp .6s ease both;">◆ DO MORE WITH LESS</div>
+      <h1 style="font-family:'Rubik',sans-serif;font-weight:900;font-size:72px;line-height:1.03;letter-spacing:-.02em;margin:0 0 26px;max-width:900px;animation:fadeUp .6s ease .07s both;">עשו את עבודתו של צוות שלם —<br><span style="color:var(--accent,#3A31E0);">בחצי מהזמן.</span></h1>
+      <p style="font-size:21px;line-height:1.62;color:#4A505C;max-width:680px;margin:0 0 38px;animation:fadeUp .6s ease .14s both;">סדנאות AI מעשיות לעורכי דין: ניסוח, בדיקה, מחקר ובניית כלים. את התוצאה מודדים בשעות שנחסכות — לא במצגות.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:58px;animation:fadeUp .6s ease .21s both;">
+        <a href="https://wa.me/972539230470?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%A0%D7%A8%D7%99%D7%94%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%96%D7%9E%D7%A0%D7%AA%20%D7%94%D7%9B%D7%A9%D7%A8%D7%AA%20AI%20%D7%9C%D7%9E%D7%A9%D7%A8%D7%93%20%D7%A9%D7%9C%D7%A0%D7%95." target="_blank" rel="noopener noreferrer" style="background:var(--accent,#3A31E0);color:#fff;font-weight:700;padding:16px 30px;border-radius:12px;font-size:16px;box-shadow:0 12px 30px color-mix(in oklab,var(--accent,#3A31E0) 28%,transparent);transition:transform .18s ease,box-shadow .18s ease;" style-hover="opacity:1;transform:translateY(-2px);box-shadow:0 16px 36px color-mix(in oklab,var(--accent,#3A31E0) 38%,transparent);">הזמנת הכשרת AI ←</a>
+        <a href="#curriculum" style="background:#fff;border:1px solid rgba(20,22,30,.14);color:#17181C;padding:16px 30px;border-radius:12px;font-size:16px;font-weight:600;transition:transform .18s ease;" style-hover="opacity:1;transform:translateY(-2px);">לתוכנית המלאה ↓</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:820px;animation:fadeUp .6s ease .28s both;">
+        <div style="background:#fff;border:1px solid rgba(20,22,30,.08);border-radius:14px;padding:22px;"><div style="font-family:'Rubik',sans-serif;font-size:25px;font-weight:800;color:var(--accent,#3A31E0);">משבועות לשעות</div><div style="font-size:14px;color:#5B606C;margin-top:5px;">AI מאפשר בדיקת נאותות על מאות חוזים במקביל</div></div>
+        <div style="background:#fff;border:1px solid rgba(20,22,30,.08);border-radius:14px;padding:22px;"><div style="font-family:'Rubik',sans-serif;font-size:25px;font-weight:800;color:var(--accent,#3A31E0);">טיוטה בדקות</div><div style="font-size:14px;color:#5B606C;margin-top:5px;">הסכם ראשון מתוך גיליון תנאים במהירות הבזק</div></div>
+        <div style="background:#fff;border:1px solid rgba(20,22,30,.08);border-radius:14px;padding:22px;"><div style="font-family:'Rubik',sans-serif;font-size:25px;font-weight:800;color:var(--accent,#3A31E0);">כל מסמך נבדק</div><div style="font-size:14px;color:#5B606C;margin-top:5px;">צוות סוכנים מאפשר לך סקירת נאותות מלאה — לא רק מדגם</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- who it's for -->
+  <section style="background:#fff;border-top:1px solid rgba(20,22,30,.06);padding:82px 40px;">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div dir="ltr" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;color:var(--accent,#3A31E0);margin-bottom:14px;">WHO THIS IS FOR</div>
+      <h2 style="font-family:'Rubik',sans-serif;font-weight:800;font-size:44px;margin:0 0 12px;letter-spacing:-.01em;">למי זה מיועד</h2>
+      <p style="color:#5B606C;font-size:17px;max-width:660px;margin:0 0 42px;">כל קהל מחפש משהו אחר. אנחנו פותחים עם המשרדים המסחריים הגדולים — שם ההשקעה מחזירה את עצמה הכי מהר.</p>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px;">
+        <div style="grid-row:span 2;position:relative;overflow:hidden;background:linear-gradient(160deg,var(--accent,#3A31E0),color-mix(in oklab,var(--accent,#3A31E0) 68%,#fff));border-radius:18px;padding:34px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 24px 50px color-mix(in oklab,var(--accent,#3A31E0) 30%,transparent);">
+          <div aria-hidden="true" style="position:absolute;inset:0;opacity:.3;background-image:radial-gradient(rgba(255,255,255,.4) 1px,transparent 1px);background-size:19px 19px;-webkit-mask-image:linear-gradient(200deg,#000,transparent 55%);mask-image:linear-gradient(200deg,#000,transparent 55%);"></div>
+          <div style="position:relative;">
+            <div dir="ltr" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:rgba(255,255,255,.75);">PRIMARY AUDIENCE</div>
+            <h3 style="font-family:'Rubik',sans-serif;font-size:29px;margin:14px 0 14px;font-weight:800;">משרדים מסחריים גדולים</h3>
+            <p style="color:rgba(255,255,255,.92);font-size:15.5px;line-height:1.62;margin:0;">שכבת הרצוג / מיתר / גולדפרב / FBC. המינוף מתעצם עם ההיקף — חדרי נתונים גדולים, בדיקת נאותות על מאות חוזים, סקירת תיקים. האתגר האמיתי: להטמיע את הכלים בבטחה בקרב מאות עורכי דין ומתמחים.</p>
+          </div>
+          <a href="#firms" style="position:relative;margin-top:24px;color:#fff;font-weight:700;font-size:15px;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:2px;align-self:flex-start;">למה זה שונה בקנה מידה גדול ←</a>
+        </div>
+        <div style="background:#F7F6F2;border:1px solid rgba(20,22,30,.07);border-radius:16px;padding:24px;transition:transform .16s ease,box-shadow .16s ease;" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,22,30,.08);"><h3 style="font-size:18px;margin:0 0 8px;font-weight:700;font-family:'Rubik',sans-serif;">עצמאים ומשרדי בוטיק</h3><p style="color:#5B606C;font-size:14.5px;line-height:1.55;margin:0;">מינוף: תפוקה של צוות גדול, בלי מחלקת מחשוב.</p></div>
+        <div style="background:#F7F6F2;border:1px solid rgba(20,22,30,.07);border-radius:16px;padding:24px;transition:transform .16s ease,box-shadow .16s ease;" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,22,30,.08);"><h3 style="font-size:18px;margin:0 0 8px;font-weight:700;font-family:'Rubik',sans-serif;">יועצים משפטיים פנים־ארגוניים</h3><p style="color:#5B606C;font-size:14.5px;line-height:1.55;margin:0;">היקף חוזים גבוה: מהירות, אחידות, ממשל נתונים ועלות.</p></div>
+        <div style="background:#F7F6F2;border:1px solid rgba(20,22,30,.07);border-radius:16px;padding:24px;transition:transform .16s ease,box-shadow .16s ease;" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,22,30,.08);"><h3 style="font-size:18px;margin:0 0 8px;font-weight:700;font-family:'Rubik',sans-serif;">ליטיגטורים</h3><p style="color:#5B606C;font-size:14.5px;line-height:1.55;margin:0;">ניסוח, מחקר, גילוי מסמכים והכנת חקירות — עם רגישות גבוהה להזיות.</p></div>
+        <div style="background:#F7F6F2;border:1px solid rgba(20,22,30,.07);border-radius:16px;padding:24px;transition:transform .16s ease,box-shadow .16s ease;" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,22,30,.08);"><h3 style="font-size:18px;margin:0 0 8px;font-weight:700;font-family:'Rubik',sans-serif;">עורכי דין עסקאות</h3><p style="color:#5B606C;font-size:14.5px;line-height:1.55;margin:0;">חיים בתוך חוזים: ניסוח, רדליין, פלייבוקים ובדיקת נאותות.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- large firm block -->
+  <section id="firms" style="padding:84px 40px;position:relative;overflow:hidden;">
+    <div aria-hidden="true" style="position:absolute;inset:0;opacity:.5;background-image:radial-gradient(color-mix(in oklab,var(--accent,#3A31E0) 12%,transparent) 1.4px,transparent 1.4px);background-size:24px 24px;-webkit-mask-image:linear-gradient(90deg,#000,transparent 58%);mask-image:linear-gradient(90deg,#000,transparent 58%);"></div>
+    <div style="position:relative;max-width:1180px;margin:0 auto;">
+      <div style="max-width:620px;margin-bottom:46px;">
+        <div dir="ltr" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;color:var(--accent,#3A31E0);margin-bottom:14px;">FOR LARGE COMMERCIAL FIRMS</div>
+        <h2 style="font-family:'Rubik',sans-serif;font-weight:800;font-size:44px;margin:0 0 14px;letter-spacing:-.01em;line-height:1.1;">איפה המינוף באמת מחזיר את ההשקעה</h2>
+        <p style="color:#5B606C;font-size:17px;line-height:1.62;margin:0;">התשואה של AI עולה ככל שהיקף המסמכים גדל. משרד גדול אינו מאמץ AI מאותן סיבות כמו עצמאי — בקנה מידה, גם הערך וגם הסיכון משנים צורה.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div style="background:#fff;border:1px solid rgba(20,22,30,.08);border-radius:16px;padding:26px;transition:transform .16s ease,box-shadow .16s ease;" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,22,30,.08);"><div style="font-family:'Rubik',sans-serif;font-size:18px;font-weight:800;color:var(--accent,#3A31E0);margin-bottom:8px;">המינוף גדל עם ההיקף</div><p style="color:#4A505C;font-size:14.5px;line-height:1.6;margin:0;">עבודה שגזלה חדר שלם של מתמחים במשך שבועות — בדיקת נאותות, סקירת פורטפוליו — מצטמצמת לשעות.</p></div>
+        <div style="background:#fff;border:1px solid rgba(20,22,30,.08);border-radius:16px;padding:26px;transition:transform .16s ease,box-shadow .16s ease;" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,22,30,.08);"><div style="font-family:'Rubik',sans-serif;font-size:18px;font-weight:800;color:var(--accent,#3A31E0);margin-bottom:8px;">מודל מינוף חדש</div><p style="color:#4A505C;font-size:14.5px;line-height:1.6;margin:0;">ניסוח וסקירה ראשוניים עוברים ל־AI עם בקרת אדם. שיחה אסטרטגית לשותפים: איוש העבודה, מודל החיוב לפי שעות, והאתיקה של חיוב זמן בסיוע AI.</p></div>
+        <div style="background:#fff;border:1px solid rgba(20,22,30,.08);border-radius:16px;padding:26px;transition:transform .16s ease,box-shadow .16s ease;" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,22,30,.08);"><div style="font-family:'Rubik',sans-serif;font-size:18px;font-weight:800;color:var(--accent,#3A31E0);margin-bottom:8px;">אחידות ולכידת ידע</div><p style="color:#4A505C;font-size:14.5px;line-height:1.6;margin:0;">Skills ופלייבוקים מאפשרים למאות עורכי דין לנסח לפי סטנדרט אחד ולמחזר את העבודה הטובה ביותר של המשרד — בעברית ובאנגלית.</p></div>
+        <div style="background:#fff;border:1px solid rgba(20,22,30,.08);border-radius:16px;padding:26px;transition:transform .16s ease,box-shadow .16s ease;" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,22,30,.08);"><div style="font-family:'Rubik',sans-serif;font-size:18px;font-weight:800;color:var(--accent,#3A31E0);margin-bottom:8px;">ממשל, אבטחה ורכש</div><p style="color:#4A505C;font-size:14.5px;line-height:1.6;margin:0;">בקרות ברמת SOC 2, התחייבות לאי־אימון על הנתונים, הפרדת סביבות, ועמידה בחוק הגנת הפרטיות וב־GDPR / חוק ה־AI האירופי.</p></div>
+        <div style="background:#fff;border:1px solid rgba(20,22,30,.08);border-radius:16px;padding:26px;transition:transform .16s ease,box-shadow .16s ease;" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,22,30,.08);"><div style="font-family:'Rubik',sans-serif;font-size:18px;font-weight:800;color:#E8552F;margin-bottom:8px;">שיקול כלכלי</div><p style="color:#4A505C;font-size:14.5px;line-height:1.6;margin:0;">Harvey בכ־1,000–1,200$ למושב · Legora מ־3,000$ למשתמש בשנה · לעומת Legal Agent של מיקרוסופט על רישיון Copilot בכ־30$. אף אחת אינה מחליפה את נבו/תקדין לדין הישראלי.</p></div>
+        <div style="background:#fff;border:1px solid rgba(20,22,30,.08);border-radius:16px;padding:26px;transition:transform .16s ease,box-shadow .16s ease;" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,22,30,.08);"><div style="font-family:'Rubik',sans-serif;font-size:18px;font-weight:800;color:#E8552F;margin-bottom:8px;">האימוץ הוא הבעיה</div><p style="color:#4A505C;font-size:14.5px;line-height:1.6;margin:0;">השאלה אינה "האם AI מסוגל", אלא "איך גורמים ל־400 עורכי דין ולמתמחים להשתמש בו בבטחה ובאחידות". זו תוכנית ניהול שינוי, לא הרצאת צהריים.</p></div>
+      </div>
+      <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:color-mix(in oklab,var(--accent,#3A31E0) 10%,#fff);border:1px solid color-mix(in oklab,var(--accent,#3A31E0) 22%,#fff);border-radius:16px;padding:24px;"><div style="font-weight:800;font-size:16px;margin-bottom:6px;font-family:'Rubik',sans-serif;">ציפיות לקוחות ופיתוח עסקי</div><p style="color:#4A505C;font-size:14.5px;line-height:1.6;margin:0;">לקוחות מתוחכמים — חברות הייטק ותאגידים רב־לאומיים — מצפים יותר ויותר לשימוש ב־AI כדי לרסן עלויות, ומתחילים לשאול על כך במכרזים ובתנאי ההתקשרות. יכולת AI אחראית הפכה לנכס עסקי.</p></div>
+        <div style="background:color-mix(in oklab,var(--accent,#3A31E0) 10%,#fff);border:1px solid color-mix(in oklab,var(--accent,#3A31E0) 22%,#fff);border-radius:16px;padding:24px;"><div style="font-weight:800;font-size:16px;margin-bottom:6px;font-family:'Rubik',sans-serif;">עבודה חוצת־גבולות ודו־לשונית</div><p style="color:#4A505C;font-size:14.5px;line-height:1.6;margin:0;">הפרקטיקה המסחרית בישראל חוצת־גבולות ומתנהלת בעברית ובאנגלית. פלטפורמות וסוכנים מנהלים את הרוחב ואת המעבר בין השפות — עם אותה משמעת אימות בכל מקום.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- curriculum: filterable cards -->
+  <section id="curriculum" style="padding:84px 40px;background:#fff;border-top:1px solid rgba(20,22,30,.06);">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div dir="ltr" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;color:var(--accent,#3A31E0);margin-bottom:14px;">WHAT YOU'LL BE ABLE TO DO</div>
+      <h2 style="font-family:'Rubik',sans-serif;font-weight:800;font-size:44px;margin:0 0 12px;letter-spacing:-.01em;">מה תוכלו לעשות</h2>
+      <p style="color:#5B606C;font-size:17px;max-width:680px;margin:0 0 30px;">עשרה מסלולים, A–J — התפריט שממנו נבנית התוכנית שלכם. סננו לפי מה שרלוונטי: כל כרטיס הוא יכולת שיוצאים איתה מהסדנה.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:9px;margin-bottom:34px;">
+        <sc-for list="{{ tracksForFilter }}" as="c" hint-placeholder-count="11">
+          <sc-if value="{{ c.active }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ c.onClick }}" style="display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border-radius:999px;font-family:'Assistant',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:all .16s ease;border:1px solid var(--accent,#3A31E0);background:var(--accent,#3A31E0);color:#fff;">{{ c.label }}</button>
+          </sc-if>
+          <sc-if value="{{ c.inactive }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ c.onClick }}" style="display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border-radius:999px;font-family:'Assistant',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:all .16s ease;border:1px solid rgba(20,22,30,.14);background:#fff;color:#2A2E3A;">{{ c.label }}</button>
+          </sc-if>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <sc-for list="{{ modulesFlat }}" as="m" hint-placeholder-count="9">
+          <div style="background:#F7F6F2;border:1px solid rgba(20,22,30,.07);border-radius:16px;padding:22px;display:flex;flex-direction:column;transition:transform .16s ease,box-shadow .16s ease,background .16s ease;" style-hover="background:#fff;box-shadow:0 16px 34px rgba(20,22,30,.1);transform:translateY(-3px);">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+              <span style="width:26px;height:26px;border-radius:8px;background:var(--accent,#3A31E0);color:#fff;display:grid;place-items:center;font-family:'Rubik',sans-serif;font-weight:700;font-size:13px;">{{ m.letter }}</span>
+              <span dir="ltr" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;color:#8B90A0;">{{ m.code }}</span>
+              <span style="margin-inline-start:auto;font-size:12.5px;color:#9AA0AC;">{{ m.short }}</span>
+            </div>
+            <div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:16px;line-height:1.35;margin-bottom:8px;">{{ m.title }}</div>
+            <div style="color:#5B606C;font-size:14px;line-height:1.55;">{{ m.blurb }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- safety -->
+  <section id="safety" style="padding:88px 40px;position:relative;overflow:hidden;">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(620px 360px at 12% 0%,rgba(232,85,47,.09),transparent 64%);"></div>
+    <div style="position:relative;max-width:1180px;margin:0 auto;">
+      <div style="max-width:660px;margin-bottom:40px;">
+        <div dir="ltr" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;color:#E8552F;margin-bottom:14px;">TAUGHT SAFELY</div>
+        <h2 style="font-family:'Rubik',sans-serif;font-weight:800;font-size:44px;margin:0 0 14px;letter-spacing:-.01em;line-height:1.1;">נלמד להשתמש באחריות — מהיסוד</h2>
+        <p style="color:#4A505C;font-size:17px;line-height:1.62;margin:0;">הדין הישראלי והרגולציה כבר כאן: בתי המשפט פוסקים הוצאות אישיות על אסמכתאות שהומצאו, ועדת האתיקה של הלשכה פרסמה גילוי דעת, והרשות להגנת הפרטיות פרסמה הנחיות לשימוש ב־AI ובמידע אישי. אנחנו בונים את הכללים האלה לתוך העבודה — כדי שהמהירות לא תבוא על חשבון הרישיון.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:26px;">
+        <div style="background:#fff;border:1px solid rgba(232,85,47,.2);border-radius:16px;padding:24px;"><div style="font-family:'Rubik',sans-serif;font-size:33px;font-weight:900;color:#E8552F;">36</div><p style="color:#4A505C;font-size:14.5px;line-height:1.55;margin:8px 0 0;">פסקי דין פיקטיביים בתיק אחד — בג״ץ 38379-12-24 (עניין פלוני). בית המשפט פרש את הסנקציות ונמנע מהן כמקרה ראשון.</p></div>
+        <div style="background:#fff;border:1px solid rgba(232,85,47,.2);border-radius:16px;padding:24px;"><div style="font-family:'Rubik',sans-serif;font-size:33px;font-weight:900;color:#E8552F;">₪30,000</div><p style="color:#4A505C;font-size:14.5px;line-height:1.55;margin:8px 0 0;">הוצאות שנפסקו על עיריית רמת גן. על עורכי דין נפסקו הוצאות אישיות של ₪1,000–8,000; המחוזי בירושלים דחה תביעה שבה 9 מתוך 11 האסמכתאות היו מומצאות.</p></div>
+        <div style="background:#fff;border:1px solid rgba(232,85,47,.2);border-radius:16px;padding:24px;"><div style="font-family:'Rubik',sans-serif;font-size:33px;font-weight:900;color:#E8552F;">שלילת רישיון</div><p style="color:#4A505C;font-size:14.5px;line-height:1.55;margin:8px 0 0;">קצה החשיפה בהליכים המשמעתיים שפתחה ועדת האתיקה הארצית. במרץ 2026 פורסם גם קוד AI מחייב לשופטים ולרשמים.</p></div>
+      </div>
+      <div style="background:#17181C;border-radius:18px;padding:36px;color:#fff;">
+        <div style="font-family:'Rubik',sans-serif;font-size:22px;font-weight:800;margin-bottom:24px;">פרוטוקול אימות האסמכתאות — כלל ברזל</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
+          <div><div dir="ltr" style="font-family:'IBM Plex Mono',monospace;color:color-mix(in oklab,var(--accent,#3A31E0) 55%,#fff);font-size:13px;margin-bottom:6px;">01</div><p style="margin:0;font-size:15px;color:#D3D5DC;line-height:1.55;">כל אסמכתא שה־AI מפיק היא בחזקת <b style="color:#fff;">"לא מאומתת"</b> — כברירת מחדל.</p></div>
+          <div><div dir="ltr" style="font-family:'IBM Plex Mono',monospace;color:color-mix(in oklab,var(--accent,#3A31E0) 55%,#fff);font-size:13px;margin-bottom:6px;">02</div><p style="margin:0;font-size:15px;color:#D3D5DC;line-height:1.55;">שולפים וקוראים את פסק הדין או הסעיף עצמו ב<b style="color:#fff;">נבו או בתקדין</b> — מודל כללי כלל אינו רואה אותם.</p></div>
+          <div><div dir="ltr" style="font-family:'IBM Plex Mono',monospace;color:color-mix(in oklab,var(--accent,#3A31E0) 55%,#fff);font-size:13px;margin-bottom:6px;">03</div><p style="margin:0;font-size:15px;color:#D3D5DC;line-height:1.55;">מוודאים שהוא באמת אומר את מה שהטיוטה טוענת — <b style="color:#fff;">לפני</b> כל הגשה.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- formats -->
+  <section id="formats" style="padding:84px 40px;background:#fff;border-top:1px solid rgba(20,22,30,.06);">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div dir="ltr" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;color:var(--accent,#3A31E0);margin-bottom:14px;">FORMATS &amp; PRICING</div>
+      <h2 style="font-family:'Rubik',sans-serif;font-weight:800;font-size:44px;margin:0 0 12px;letter-spacing:-.01em;">פורמטים ותמחור</h2>
+      <p style="color:#5B606C;font-size:17px;max-width:660px;margin:0 0 40px;">כל פורמט כולל סדנאות מעשיות על מסמכים אמיתיים — שם נופל האסימון. המחירים הם הצעת פתיחה לקבוצה, לא לפי משתתף.</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+        <div style="background:#F7F6F2;border:1px solid rgba(20,22,30,.08);border-radius:16px;padding:24px;display:flex;flex-direction:column;"><div dir="ltr" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent,#3A31E0);margin-bottom:10px;">90 MIN</div><h3 style="font-size:18px;margin:0 0 8px;font-weight:700;font-family:'Rubik',sans-serif;">Baby-Steps</h3><p style="color:#5B606C;font-size:14px;line-height:1.5;margin:0 0 18px;flex:1;">מסלולים A + I (בטיחות תחילה) וטעימה מ־B. לקהל זהיר או להשתלמות במשרד.</p><div style="font-family:'Rubik',sans-serif;font-size:23px;font-weight:800;">{{ prices.intro }}</div><div style="font-size:12.5px;color:#8B90A0;margin-top:3px;">למפגש · עד כ־25 משתתפים</div></div>
+        <div style="background:linear-gradient(160deg,var(--accent,#3A31E0),color-mix(in oklab,var(--accent,#3A31E0) 78%,#000));border-radius:16px;padding:24px;color:#fff;position:relative;display:flex;flex-direction:column;box-shadow:0 20px 44px color-mix(in oklab,var(--accent,#3A31E0) 30%,transparent);"><div style="position:absolute;top:-11px;inset-inline-start:24px;background:#E8552F;color:#fff;font-size:11px;font-weight:700;padding:4px 11px;border-radius:999px;">הפופולרי</div><div dir="ltr" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(255,255,255,.75);margin-bottom:10px;">HALF DAY</div><h3 style="font-size:18px;margin:0 0 8px;font-weight:700;font-family:'Rubik',sans-serif;">יום מעשי</h3><p style="color:rgba(255,255,255,.9);font-size:14px;line-height:1.5;margin:0 0 18px;flex:1;">A · B · D · I עם מעבדות מעשיות. הבחירה של רוב המשרדים.</p><div style="font-family:'Rubik',sans-serif;font-size:23px;font-weight:800;">{{ prices.half }}</div><div style="font-size:12.5px;color:rgba(255,255,255,.8);margin-top:3px;">למפגש · חצי יום</div></div>
+        <div style="background:#F7F6F2;border:1px solid rgba(20,22,30,.08);border-radius:16px;padding:24px;display:flex;flex-direction:column;"><div dir="ltr" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent,#3A31E0);margin-bottom:10px;">FULL DAY</div><h3 style="font-size:18px;margin:0 0 8px;font-weight:700;font-family:'Rubik',sans-serif;">צלילה מלאה</h3><p style="color:#5B606C;font-size:14px;line-height:1.5;margin:0 0 18px;flex:1;">כל היום המעשי, בתוספת C · E · F · H.</p><div style="font-family:'Rubik',sans-serif;font-size:23px;font-weight:800;">{{ prices.full }}</div><div style="font-size:12.5px;color:#8B90A0;margin-top:3px;">ליום עבודה מלא</div></div>
+        <div style="background:#F7F6F2;border:1px solid rgba(20,22,30,.08);border-radius:16px;padding:24px;display:flex;flex-direction:column;"><div dir="ltr" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent,#3A31E0);margin-bottom:10px;">COHORT</div><h3 style="font-size:18px;margin:0 0 8px;font-weight:700;font-family:'Rubik',sans-serif;">מחזור רב־שבועי</h3><p style="color:#5B606C;font-size:14px;line-height:1.5;margin:0 0 18px;flex:1;">הכול, כולל G (סוכנים) ופרויקטים — כל משתתף משיק skill או כלי משלו.</p><div style="font-family:'Rubik',sans-serif;font-size:23px;font-weight:800;">{{ prices.cohort }}</div><div style="font-size:12.5px;color:#8B90A0;margin-top:3px;">למחזור · לפי היקף</div></div>
+      </div>
+      <div style="margin-top:16px;background:color-mix(in oklab,var(--accent,#3A31E0) 10%,#fff);border:1px solid color-mix(in oklab,var(--accent,#3A31E0) 20%,#fff);border-radius:16px;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;"><div><h3 style="font-size:18px;margin:0 0 4px;font-weight:700;font-family:'Rubik',sans-serif;">מסלול לפי סגמנט</h3><p style="color:#4A505C;font-size:14px;margin:0;">עסקאות: B2/B3/C/F · ליטיגציה: B5/B8/I3 · פנים־ארגוני: D/H/I.</p></div><div style="font-family:'Rubik',sans-serif;font-size:19px;font-weight:800;color:var(--accent,#3A31E0);">תמחור לפי היקף</div></div>
+      <p style="color:#8B90A0;font-size:12.5px;margin:18px 0 0;">המחירים אינם כוללים מע״מ · כוללים סקר מקדים והתאמת תוכן לעבודת המשרד</p>
+    </div>
+  </section>
+
+  <!-- tailoring -->
+  <section style="padding:82px 40px;">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;">
+      <div>
+        <div dir="ltr" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;color:var(--accent,#3A31E0);margin-bottom:14px;">PROOF · TAILORING</div>
+        <h2 style="font-family:'Rubik',sans-serif;font-weight:800;font-size:37px;margin:0 0 16px;line-height:1.16;letter-spacing:-.01em;">אנחנו מראיינים את עורכי הדין שלכם — ובונים את התוכנית סביב העבודה האמיתית</h2>
+        <p style="color:#4A505C;font-size:16.5px;line-height:1.62;margin:0;">סקר קצר וכמה שיחות לפני הסדנה. מקבצים את התשובות לנושאים ומדרגים את המודולים לפי <b style="color:#17181C;">תדירות × סיכון</b> — הצורך השכיח והרגיש ביותר הופך לכותרת.</p>
+      </div>
+      <div style="background:#17181C;border-radius:18px;padding:32px;color:#fff;">
+        <div style="font-weight:700;font-size:15px;color:color-mix(in oklab,var(--accent,#3A31E0) 55%,#fff);margin-bottom:20px;font-family:'Rubik',sans-serif;">כך אנחנו מתאימים את התוכנית</div>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div style="display:flex;gap:14px;"><span dir="ltr" style="flex:0 0 auto;width:27px;height:27px;border-radius:8px;background:color-mix(in oklab,var(--accent,#3A31E0) 82%,#000);color:#fff;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:13px;">1</span><div><div style="font-weight:700;font-size:15px;margin-bottom:2px;">טופס קצר מראש</div><div style="font-size:14px;color:#B9BCC6;line-height:1.5;">נשלח לכל משתתף לפני הסדנה, לצד כמה שיחות רקע.</div></div></div>
+          <div style="display:flex;gap:14px;"><span dir="ltr" style="flex:0 0 auto;width:27px;height:27px;border-radius:8px;background:color-mix(in oklab,var(--accent,#3A31E0) 82%,#000);color:#fff;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:13px;">2</span><div><div style="font-weight:700;font-size:15px;margin-bottom:2px;">אשכול ודירוג</div><div style="font-size:14px;color:#B9BCC6;line-height:1.5;">ממפים את הממצאים ומדרגים אותם לפי תדירות × סיכון.</div></div></div>
+          <div style="display:flex;gap:14px;"><span dir="ltr" style="flex:0 0 auto;width:27px;height:27px;border-radius:8px;background:color-mix(in oklab,var(--accent,#3A31E0) 82%,#000);color:#fff;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:13px;">3</span><div><div style="font-weight:700;font-size:15px;margin-bottom:2px;">אג׳נדה מותאמת</div><div style="font-size:14px;color:#B9BCC6;line-height:1.5;">בונים סדר יום שמדגיש את מה שבאמת צריך — עם דוגמאות מהמשרד שלכם.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" style="position:relative;padding:100px 40px;overflow:hidden;background:linear-gradient(160deg,var(--accent,#3A31E0),color-mix(in oklab,var(--accent,#3A31E0) 74%,#000));color:#fff;text-align:center;">
+    <div aria-hidden="true" style="position:absolute;inset:0;opacity:.5;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(640px 420px at 50% 0%,#000,transparent 74%);mask-image:radial-gradient(640px 420px at 50% 0%,#000,transparent 74%);"></div>
+    <div style="position:relative;max-width:700px;margin:0 auto;">
+      <h2 style="font-family:'Rubik',sans-serif;font-weight:900;font-size:50px;margin:0 0 18px;line-height:1.06;letter-spacing:-.01em;">הזמינו הכשרת AI למשרד</h2>
+      <p style="color:rgba(255,255,255,.85);font-size:18px;line-height:1.6;margin:0 0 34px;">נבנה יחד איתכם תוכנית סביב העבודה האמיתית שלכם. השלב הראשון — שיחת היכרות קצרה.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://wa.me/972539230470?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%A0%D7%A8%D7%99%D7%94%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%96%D7%9E%D7%A0%D7%AA%20%D7%94%D7%9B%D7%A9%D7%A8%D7%AA%20AI%20%D7%9C%D7%9E%D7%A9%D7%A8%D7%93%20%D7%A9%D7%9C%D7%A0%D7%95." target="_blank" rel="noopener noreferrer" style="background:#fff;color:var(--accent,#3A31E0);font-weight:700;padding:17px 34px;border-radius:12px;font-size:17px;transition:transform .18s ease,box-shadow .18s ease;" style-hover="opacity:1;transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.28);">הזמנת הכשרת AI ←</a>
+        <div style="flex-basis:100%;font-size:14.5px;color:rgba(255,255,255,.72);">שיחת היכרות של 20 דקות · ללא התחייבות</div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer style="padding:44px 40px;background:#17181C;color:#fff;">
+    <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start;">
+      <div>
+        <div style="font-weight:700;font-size:15px;margin-bottom:4px;font-family:'Rubik',sans-serif;">נריה רטיג · עו״ד</div>
+        <div dir="ltr" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8B90A0;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="80eee5f2f9e1c0eee5f2f9e1aee9ef">[email&#160;protected]</a> · +972-53-923-0470</div>
+      </div>
+      <p style="color:#8B90A0;font-size:12px;line-height:1.55;max-width:580px;margin:0;">הערת היקף: המהדורה מותאמת למשרדי עורכי דין בישראל. פרטי הפסיקה והנחיות הלשכה משקפים דיווחים מאמצע 2026 .</p>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#6D28D9&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#3A31E0&quot;,&quot;#2563EB&quot;,&quot;#0EA5A0&quot;,&quot;#6D28D9&quot;],&quot;section&quot;:&quot;עיצוב&quot;},&quot;showPrices&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;תוכן&quot;}}">
+class Component extends DCLogic {
+  state = { activeTrackB: null };
+
+  curriculum = [
+    { letter: 'A', he: 'יסודות והתמצאות', en: 'FOUNDATIONS', short: 'יסודות', modules: [
+      { code: 'A1', title: 'מפת כלי ה־AI לעורכי דין', blurb: 'להבין למה נועד כל כלי, כדי להפסיק להשתמש בצ׳אטבוט למשימה שדורשת סוכן — ולהפך.' },
+      { code: 'A2', title: 'איך הכלים באמת עובדים (ולמה הם משקרים לפעמים)', blurb: 'עשר דקות של הבנה איך המנוע עובד מונעות את רוב הטעויות שעלולות לעלות ביוקר.' },
+      { code: 'A3', title: 'הגדרה ראשונית ואבטחה נכונה', blurb: 'להגדיר נכון פעם אחת — המנוי המתאים, עם הגדרות הנתונים הנכונות.' },
+    ]},
+    { letter: 'B', he: 'עבודה משפטית יומיומית', en: 'EVERYDAY WORK', short: 'יומיומי', modules: [
+      { code: 'B1', title: 'ניסוח מתוך תקציר', blurb: 'להפוך הנחיה בת שתי שורות לטיוטה ראשונה איתנה.' },
+      { code: 'B2', title: 'ניסוח חוזים מגיליון תנאים או מתקדים', blurb: 'טיוטות הסכם ראשונות בדקות, לא בשעות.' },
+      { code: 'B3', title: 'בדיקת חוזים ורדליין מול פלייבוק', blurb: 'בודק ראשוני בלתי־נלאה שמסמן כל סטייה מהסטנדרטים שלכם.' },
+      { code: 'B4', title: 'סיכום ופישוט', blurb: 'להפוך כל מסמך צפוף לקריא — עבורכם, השותף או הלקוח.' },
+      { code: 'B5', title: 'סיוע במחקר משפטי — בבטחה', blurb: 'להתמצא מהר, ורק אז לאמת בנבו/תקדין — לפני שסומכים על מילה.' },
+      { code: 'B6', title: 'עברית, אנגלית ועבודה דו־לשונית', blurb: 'לעבוד בזרימה בין עברית לאנגלית — כולל מסמכי RTL שלא מתפרקים.' },
+      { code: 'B7', title: 'גילוי מסמכים ובדיקת נאותות בהיקף', blurb: 'לסקור כל מסמך בעסקה — לא רק את מה שהספקתם לקרוא.' },
+      { code: 'B8', title: 'הכנה לליטיגציה וטיעון', blurb: 'שותף אימון לטיעונים, לחקירות נגדיות ולשאלות.' },
+    ]},
+    { letter: 'C', he: 'מסמכים ואוטומציה', en: 'AUTOMATION', short: 'אוטומציה', modules: [
+      { code: 'C1', title: 'תבניות וספריות סעיפים', blurb: 'לבנות נכסים לשימוש חוזר פעם אחת, ולהפסיק להמציא מחדש שפה סטנדרטית.' },
+      { code: 'C2', title: 'הפקת מסמכים בהיקף גדול', blurb: 'מיזוג דואר מתקדם: טופס קליטה נכנס — ערכת מסמכים מוגמרת יוצאת.' },
+      { code: 'C3', title: 'חילוץ נתונים ממסמכים', blurb: 'לשלוף בדיוק את השדות, הסעיפים או החלקים שצריך מתוך ערימת קבצים.' },
+      { code: 'C4', title: 'מילוי טפסים והמרת פורמטים', blurb: 'להפסיק להעתיק ידנית בין PDF, וורד ונתונים מובְנים.' },
+    ]},
+    { letter: 'D', he: 'עבודה בתוך Microsoft 365 ואפליקציות', en: 'INTEGRATIONS', short: 'אינטגרציות', modules: [
+      { code: 'D1', title: 'Copilot בוורד', blurb: 'ה־AI כבר יושב בכלי שהמשרד עובד איתו כל היום — כולל Legal Agent שמחזיר רדליין בעקוב אחר שינויים אמיתי.' },
+      { code: 'D2', title: 'Copilot בשאר 365', blurb: 'עוזר אחד על פני דואר, גיליונות, מצגות ופגישות.' },
+      { code: 'D3', title: 'עוזרים אחרים בתוך המסמכים', blurb: 'גם Claude ואחרים מתחברים לוורד, אקסל, PowerPoint ו־Outlook.' },
+      { code: 'D4', title: 'שכבת אינטליגנציה משפטית ב־365', blurb: 'להוסיף AI משפטי ייעודי מעל שכבת הפרודוקטיביות — היכן שזה מתאים לעבודה ישראלית.' },
+      { code: 'D5', title: 'Google Workspace ומערכות ניהול מסמכים', blurb: 'אותן יכולות, אם אתם חיים בסביבת גוגל ולא במיקרוסופט.' },
+      { code: 'D6', title: 'חיבור כלים למערכות דרך MCP ומחברים', blurb: 'לתת ל־AI גישה מבוקרת לדואר, ליומן, לקבצים ולנתוני התיקים — בזהירות.' },
+    ]},
+    { letter: 'E', he: 'בניית כלים ואפליקציות לשימוש עצמי', en: 'BUILD YOUR OWN', short: 'כלים', modules: [
+      { code: 'E1', title: 'כלים פנימיים מיידיים (בלי מתכנת)', blurb: 'מחשבוני התיישנות, אגרה, ריבית והצמדה — לתאר כלי במשפט אחד, לקבל כלי עובד.' },
+      { code: 'E2', title: 'כלים בשירות עצמי הפונים ללקוח', blurb: 'לתת ללקוח חוויה מודרכת — עם גבולות ייעוץ ודיסקליימרים לפי חוק לשכת עורכי הדין.' },
+      { code: 'E3', title: 'אפליקציות פנימיות קטנות בלי קוד', blurb: 'לוחות בקרה ומעקבים שהצוות באמת משתמש בהם.' },
+      { code: 'E4', title: 'אפליקציות מבוססות־AI', blurb: 'כשהכלי עצמו צריך לחשוב, לא רק לחשב.' },
+      { code: 'E5', title: 'ממשל לכלים שעורכי דין בונים', blurb: 'להשיק כלים פנימיים בלי ליצור בעיית סודיות או איכות.' },
+    ]},
+    { letter: 'F', he: 'התאמה אישית: skills, פלייבוקים וזיכרון', en: 'PERSONALIZATION', short: 'התאמה', modules: [
+      { code: 'F1', title: 'מה זה "skills" ולמה זו התכונה בעלת המינוף הגבוה ביותר', blurb: 'ללמד את ה־AI את דרך העבודה שלכם פעם אחת — ולהשתמש בה תמיד.' },
+      { code: 'F2', title: 'יצירת skill מותאם אישית', blurb: 'להטמיע את הסטנדרטים של המשרד — כולל skill לדין הישראלי ולעברית RTL — בתוך הכלי.' },
+      { code: 'F3', title: 'עריכה, ניהול גרסאות ושיתוף skills בצוות', blurb: 'לשמור על ה־skills עדכניים ואחידים בכל המשרד.' },
+      { code: 'F4', title: 'אימון על תקדימים מול בניית skill', blurb: 'שתי דרכים לגרום ל־AI "להישמע כמו המשרד" — עם הבנת ההשלכות והסודיות של כל אחת.' },
+      { code: 'F5', title: 'מסלול ההתאמה ללא קוד', blurb: 'עוזרים מותאמים בשפה פשוטה, בלי הגדרה טכנית.' },
+    ]},
+    { letter: 'G', he: 'זרימות עבודה סוכניות מתקדמות', en: 'ADVANCED AGENTS', short: 'סוכנים', modules: [
+      { code: 'G1', title: 'מצ׳אטבוט לסוכן — מה באמת משתנה', blurb: 'להבין אוטונומיה לפני שמוסרים את המפתחות.' },
+      { code: 'G2', title: 'הפעלת סוכנים ותת־סוכנים; דפוסי אורקסטרציה', blurb: 'סוכן "מנהל" אחד שמפעיל סוכנים מומחים כדי לבצע את העבודה.' },
+      { code: 'G3', title: 'הרצת עבודה במקביל וניהול תהליכים מרובים', blurb: 'חמישה דברים מתקדמים במקביל, במקום אחד בכל פעם.' },
+      { code: 'G4', title: 'אוטומציה של תהליכים רב־שלביים', blurb: 'להפוך רצף שחוזר על עצמו לתהליך שרץ מעצמו, מקצה לקצה.' },
+      { code: 'G5', title: 'תזמון ומשימות חוזרות', blurb: 'להתעורר כשהעבודה כבר עשויה — תדריכי מועדים יומיים, ניטור הגשות חדשות.' },
+      { code: 'G6', title: 'אימות עבודת הסוכן (בלתי־מתפשר במשפט)', blurb: 'לסמוך, אבל לבדוק את הראיות — רשימות משימות, מסמכי תוכנית וצילומי מסך כמסלול ביקורת.' },
+      { code: 'G7', title: 'מתי לא להשתמש בסוכן', blurb: 'יש שיקולי דעת שנשארים אנושיים, נקודה.' },
+    ]},
+    { letter: 'H', he: 'עלות וניהול טוקנים', en: 'COST', short: 'עלות', modules: [
+      { code: 'H1', title: 'טוקנים וחלונות הקשר — בשפה לא־טכנית', blurb: 'להבין על מה משלמים, ולמה מסמכים ארוכים עולים יותר.' },
+      { code: 'H2', title: 'ניהול תקציבים ורמות מודל במשרד', blurb: 'להתאים את המודל למשימה ולשלוט בהוצאה.' },
+      { code: 'H3', title: 'חיסכון בטוקנים', blurb: 'לעשות יותר באותו תקציב — פרומפט ממוקד, ניקיון ההקשר, ושימוש חוזר ב־skills.' },
+      { code: 'H4', title: 'ממשל עלות והשלכות חיוב', blurb: 'לשמור על הוצאת AI מוצדקת, ובמקום הרלוונטי — ניתנת לייחוס לתיק.' },
+    ]},
+    { letter: 'I', he: 'בטיחות, אתיקה וציות', en: 'SAFETY & ETHICS', short: 'בטיחות', modules: [
+      { code: 'I1', title: 'סודיות וחיסיון (חיסיון עו״ד–לקוח)', blurb: 'ההרגל החשוב ביותר — לדעת מה מותר ומה אסור להכניס לכלי.' },
+      { code: 'I2', title: 'מיומנות וחובת ההבנה של הכלים', blurb: '"הכלי טעה" אינו הגנה — האחריות על התוצר היא של עורך הדין בלבד.' },
+      { code: 'I3', title: 'הגינות כלפי בית המשפט ואימות', blurb: 'כל אסמכתא נבדקת מול המקור בנבו/תקדין. בלי יוצאים מן הכלל.' },
+      { code: 'I4', title: 'פיקוח על ה־AI ועל הצוות', blurb: 'מפקחים על ה־AI כמו על מתמחה — ועל האנשים שמשתמשים בו.' },
+      { code: 'I5', title: 'תקשורת עם הלקוח, הסכמה ואתיקת שכר טרחה', blurb: 'להיות ישרים עם הלקוח, לקבל הסכמה בכתב מראש, ולחייב ביושר.' },
+      { code: 'I6', title: 'היגיינת אבטחה ומשטח התקיפה הסוכני', blurb: 'סוכנים שיכולים לפעול צריכים גבולות קשיחים; היזהרו מהזרקת פרומפט.' },
+      { code: 'I7', title: 'הטיה, הוגנות והסתמכות־יתר', blurb: 'לשמור על שיקול הדעת האנושי בתוך הלולאה — תמיד.' },
+      { code: 'I8', title: 'בדיקת נאותות לספקים', blurb: 'לקנות כלים שאפשר להגן עליהם — SOC 2, אי־אימון על הנתונים, מיקום הדאטה, והתאמה לעברית.' },
+    ]},
+    { letter: 'J', he: 'פרומפטינג ותוצרים טובים', en: 'PROMPTING', short: 'פרומפטים', modules: [
+      { code: 'J1', title: 'דפוסי פרומפט למשימות משפטיות', blurb: 'ההבדל בין תשובה בינונית למצוינת הוא בדרך כלל הפרומפט.' },
+      { code: 'J2', title: 'הזנת הקשר כמו שצריך', blurb: 'קלט זבל — פלט זבל; הקשר טוב נכנס, טיוטה שמישה יוצאת.' },
+      { code: 'J3', title: 'איטרציה וליטוש', blurb: 'להתייחס אל זה כאל שיחה, לא כאל מכונת מזל.' },
+      { code: 'J4', title: 'בניית ספריית פרומפטים אישית או משרדית', blurb: 'לשמור את מה שעובד, כדי שאף אחד לא יתחיל מאפס.' },
+    ]},
+  ];
+
+  renderVals() {
+    const accent = this.props.accentColor || '#3A31E0';
+    const showPrices = this.props.showPrices !== false;
+    const tracks = this.curriculum;
+    const at = this.state.activeTrackB;
+    const tracksForFilter = [{ label: 'הכול', active: at == null, inactive: at != null, onClick: () => this.setState({ activeTrackB: null }) }]
+      .concat(tracks.map(t => ({ label: t.short, active: at === t.letter, inactive: at !== t.letter, onClick: () => this.setState({ activeTrackB: t.letter }) })));
+    const modulesFlat = [];
+    tracks.forEach(t => {
+      if (at == null || at === t.letter) {
+        t.modules.forEach(m => modulesFlat.push({ code: m.code, title: m.title, blurb: m.blurb, letter: t.letter, short: t.short }));
+      }
+    });
+    const q = 'בקשת הצעה';
+    const prices = {
+      intro: showPrices ? '₪4,500' : q,
+      half: showPrices ? 'מ־₪9,500' : q,
+      full: showPrices ? 'מ־₪16,000' : q,
+      cohort: showPrices ? 'מ־₪48,000' : q,
+    };
+    return { accent, curriculum: tracks, tracksForFilter, modulesFlat, prices };
+  }
+}
+</script>
+</body>
+</html>
