@@ -21,21 +21,6 @@ design_sections:
 
 ## Next Steps
 
-### Item 1 — Syllabus set (Hebrew)
-Create `syllabus/README.md` (index, links to all 7 docs below) plus 4 format
-syllabuses (`90-min-baby-steps.md`, `half-day.md`, `full-day.md`,
-`multi-week-cohort.md`) and 3 segment one-pagers
-(`segment-transactional.md`, `segment-litigation.md`, `segment-in-house.md`).
-**Acceptance:** all 8 files exist; each of the 7 content docs is Hebrew and
-contains headings קהל יעד / משך / מטרות / תרגול מעשי /
-פרוטוקול אימות אסמכתאות (with ≥3 numbered steps); every module code cited
-(e.g. B3, I1) exists in the master curriculum; each format's module list
-covers the tracks curriculum §3 assigns to it (90-min: A+I+taste of B;
-half-day: A/B/D/I; full-day: adds C/E/F/H; cohort: all incl. G); segment
-one-pagers cite the specific §3 weighting (transactional: B2/B3 + C/F
-tracks; litigation: B5/B8/I3; in-house: D/H/I tracks). **Files:**
-`syllabus/*.md`. Verify: `bash tests/run_checks.sh` §1 (checks 2–67).
-
 ### Item 2 — Static landing page (index.html)
 Derive a self-contained `index.html` at repo root from
 `sources/AI-for-Lawyers-Landing.dc.html`, resolving all template artifacts
@@ -68,7 +53,13 @@ from item 1, but there's no benefit to parallelizing a sprint this size.
 
 ## Dev Complete
 
-(none yet)
+### Item 1 — Syllabus set (Hebrew)
+Files: `syllabus/README.md`, `syllabus/90-min-baby-steps.md`,
+`syllabus/half-day.md`, `syllabus/full-day.md`,
+`syllabus/multi-week-cohort.md`, `syllabus/segment-transactional.md`,
+`syllabus/segment-litigation.md`, `syllabus/segment-in-house.md`.
+Commit: `984394d`. Result: `bash tests/run_checks.sh` Gate 1 (checks 1–67)
+= 67/67 passed.
 
 ## Completed
 
