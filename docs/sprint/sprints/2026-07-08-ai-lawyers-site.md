@@ -1,18 +1,18 @@
 ---
 id: "2026-07-08-ai-lawyers-site"
-status: dev-complete
-current_role: qa
+status: review
+current_role: planner
 branch: sprint/2026-07-08-ai-lawyers-site
 locked_by: null
 locked_at: null
-last_agent: "claude-code:developer"
-last_updated: 2026-07-08T13:15:00Z
+last_agent: "claude-code:qa"
+last_updated: 2026-07-08T10:24:00Z
 evaluator: custom
 evaluator_command: "bash tests/run_checks.sh"
 total_items: 3
-completed_items: 0
-dev_complete_items: 3
-qa_cycles: 0
+completed_items: 3
+dev_complete_items: 0
+qa_cycles: 1
 prd_sections:
   - sources/AI-for-Lawyers-Workshop-Curriculum.md
 design_sections:
@@ -21,9 +21,13 @@ design_sections:
 
 ## Next Steps
 
-(none — all 3 items dev-complete, ready for QA)
+(none — all 3 items QA-passed, sprint in review)
 
 ## Dev Complete
+
+(none — all 3 items promoted to Completed by QA)
+
+## Completed
 
 ### Item 1 — Syllabus set (Hebrew)
 Files: `syllabus/README.md`, `syllabus/90-min-baby-steps.md`,
@@ -31,29 +35,83 @@ Files: `syllabus/README.md`, `syllabus/90-min-baby-steps.md`,
 `syllabus/multi-week-cohort.md`, `syllabus/segment-transactional.md`,
 `syllabus/segment-litigation.md`, `syllabus/segment-in-house.md`.
 Commit: `984394d`. Result: `bash tests/run_checks.sh` Gate 1 (checks 1–67)
-= 67/67 passed.
+= 67/67 passed. **QA VERIFIED (2026-07-08):** all 8 files present on disk;
+commit `984394d` confirmed in `git log`. Spot-checked `syllabus/half-day.md`
+and `syllabus/segment-litigation.md` in full — coherent professional Hebrew
+prose (not machine-gibberish), module codes cited match curriculum §3
+mapping (half-day cites A1-A3/B1-B5/D1-D3/I1,I3,I4,I6 = tracks A/B/D/I as
+required; segment-litigation cites B5/B8/I3 as required). Citation-
+verification protocol in both is 3 numbered steps matching curriculum §I3
+verbatim semantics: (1) every AI citation "לא מאומת" (unverified) by
+default, (2) pull and read the real source in נבו/תקדין (Nevo/Takdin) — a
+chat model does not see the actual source, (3) confirm the source says
+what the draft claims, before it leaves the office. Verified this pattern
+holds across all 7 content docs (not just the 2 spot-checked) via new
+automated regression check (Gate 4, checks 6-12).
 
 ### Item 2 — Static landing page (index.html)
 Files: `index.html`. Commit: `51b8eb5`. Result: `bash tests/run_checks.sh`
-Gate 2 (checks 68–99) = 32/32 passed.
+Gate 2 (checks 68–99) = 32/32 passed. **QA VERIFIED (2026-07-08):** file
+present on disk; commit `51b8eb5` confirmed in `git log`. Browser-verified
+via mcp Claude Preview (Chromium) serving repo root on :8901 — no console
+errors, no failed network requests. Confirmed: all 54 module cards visible
+on load; "הכול" (all) filter button styled active by default
+(`.filter-btn.active`, accent bg `rgb(109,40,217)` = #6D28D9). Clicked
+`data-filter="B"` — exactly 8 cards remained visible, all with
+`data-track="B"`, B button became active/accent-styled, "all" button
+deactivated. Clicked `data-filter="all"` — all 54 cards restored, "all"
+button re-activated. RTL confirmed (`dir="rtl"` on root div, `lang="he"`),
+hero Hebrew headline present ("עשו את עבודתו של צוות שלם — בחצי מהזמן.").
+No `{{` template tokens, no `__cf_email__`/`cdn-cgi` artifacts; footer
+shows plain-text `nerya@nerya.io`. Resized to 375×812 (mobile) — no
+horizontal overflow (`scrollWidth` == `innerWidth` == 375px, 0 overflowing
+elements detected via bounding-rect scan); screenshots taken confirming
+single-column layout. `<title>` and `<meta name="description">` both
+present and non-empty (new Gate 4 checks 1-2).
 
 ### Item 3 — Pages deployment config
 Files: `CNAME`, `.nojekyll`. Commit: `0ad4112`. Result:
-`bash tests/run_checks.sh` Gate 3 (checks 100–103) = 4/4 passed.
-
-## Completed
-
-(none yet)
+`bash tests/run_checks.sh` Gate 3 (checks 100–103) = 4/4 passed. **QA
+VERIFIED (2026-07-08):** both files present at repo root; commit `0ad4112`
+confirmed in `git log`. `CNAME` contains exactly `lawyers.nerya.io`;
+`.nojekyll` is 0 bytes.
 
 ## Evaluation Notes
 
-All 3 items dev-complete. Full authoritative pass:
-`bash tests/run_checks.sh` → 103/103 checks passed (Gate 1: 67/67, Gate 2:
-32/32, Gate 3: 4/4). No deviations from the brief; no escalations raised.
+All 3 items QA-verified and promoted to Completed. Full authoritative pass
+(QA's independent run): `bash tests/run_checks.sh` → 115/115 checks passed
+(Gate 1: 67/67, Gate 2: 32/32, Gate 3: 4/4, Gate 4 [new QA regression]:
+12/12). No deviations from the brief; no escalations raised.
 
 ## QA Notes
 
-(none yet)
+**2026-07-08 — QA pass 1 (qa_cycles: 1).** Synced to `28f028b` per brief.
+Ran `bash tests/run_checks.sh` independently (own pass, not reusing Dev's
+numbers): 103/103 on the original 3 gates before adding regression tests.
+Verified all 3 commit hashes (`984394d`, `51b8eb5`, `0ad4112`) exist in
+`git log --oneline`. Did browser verification of `index.html` per brief
+§3 using the mcp Claude Preview tool (Chromium-based) against
+`python3 -m http.server 8901` — see per-item notes above for the full
+checklist (a-g), all satisfied. Did syllabus spot-check per brief §4 —
+read `syllabus/half-day.md` and `syllabus/segment-litigation.md` in full;
+content is professional, coherent, curriculum-aligned; no nonsense or
+mapping errors found.
+
+Added Gate 4 (`tests/check-qa-regression.mjs`, wired into
+`tests/run_checks.sh`) — 12 new checks: `<title>`/meta-description
+presence (2), filter-script <-> `data-filter`/`data-track`/`filter-btn`
+structural wiring pin (2), a page-derived (not hardcoded) check that the
+mobile `@media (max-width)` block collapses every multi-column grid
+element actually present on the page (1), and a semantic (not just
+heading+step-count) check that all 7 syllabus content docs' citation-
+verification protocols match curriculum §I3 (7). Mutation-tested checks
+#3 (filter-script wiring) and the semantic-protocol check against
+deliberately-broken inputs (outside the working tree / reverted before
+commit) to confirm they actually fail on regressions, not just pass
+vacuously. Full suite after additions: 115/115 green.
+
+Verdict: PASS on all 3 items. Status set to `review`, `current_role:
+planner`, `qa_cycles: 1`. No deviations from the brief. No escalations.
 
 ## Context Dump
 
