@@ -1,17 +1,17 @@
 ---
 id: "2026-07-08-ai-lawyers-site"
-status: planned
-current_role: developer
+status: dev-complete
+current_role: qa
 branch: sprint/2026-07-08-ai-lawyers-site
 locked_by: null
 locked_at: null
-last_agent: "claude-code:planner"
-last_updated: 2026-07-08T09:46:35Z
+last_agent: "claude-code:developer"
+last_updated: 2026-07-08T13:15:00Z
 evaluator: custom
 evaluator_command: "bash tests/run_checks.sh"
 total_items: 3
 completed_items: 0
-dev_complete_items: 0
+dev_complete_items: 3
 qa_cycles: 0
 prd_sections:
   - sources/AI-for-Lawyers-Workshop-Curriculum.md
@@ -21,18 +21,7 @@ design_sections:
 
 ## Next Steps
 
-### Item 3 — Pages deployment config
-Add `CNAME` (root) with content exactly `lawyers.nerya.io`, and an empty
-`.nojekyll` (root). **Acceptance:** both files exist; `CNAME` content is
-exactly `lawyers.nerya.io` (no extra text, trailing newline OK);
-`.nojekyll` is 0 bytes. **Files:** `CNAME`, `.nojekyll`. Verify:
-`bash tests/run_checks.sh` §3 (checks 100–103). Note: actually enabling
-GitHub Pages and verifying the live URL is the manager's ops step +
-QA's check, not part of this item.
-
-Single Developer does all 3 items sequentially in this branch (small
-sprint, no parallel/worktree mode). Items 2 and 3 touch files disjoint
-from item 1, but there's no benefit to parallelizing a sprint this size.
+(none — all 3 items dev-complete, ready for QA)
 
 ## Dev Complete
 
@@ -48,13 +37,19 @@ Commit: `984394d`. Result: `bash tests/run_checks.sh` Gate 1 (checks 1–67)
 Files: `index.html`. Commit: `51b8eb5`. Result: `bash tests/run_checks.sh`
 Gate 2 (checks 68–99) = 32/32 passed.
 
+### Item 3 — Pages deployment config
+Files: `CNAME`, `.nojekyll`. Commit: `0ad4112`. Result:
+`bash tests/run_checks.sh` Gate 3 (checks 100–103) = 4/4 passed.
+
 ## Completed
 
 (none yet)
 
 ## Evaluation Notes
 
-(none yet)
+All 3 items dev-complete. Full authoritative pass:
+`bash tests/run_checks.sh` → 103/103 checks passed (Gate 1: 67/67, Gate 2:
+32/32, Gate 3: 4/4). No deviations from the brief; no escalations raised.
 
 ## QA Notes
 
