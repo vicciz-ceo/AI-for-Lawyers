@@ -43,6 +43,7 @@ run_suite tests/check-syllabus.mjs
 run_suite tests/check-site.mjs
 run_suite tests/check-deploy.mjs
 run_suite tests/check-qa-regression.mjs
+run_suite tests/check-copy-change.mjs
 
 echo ""
 echo "=============================================="
