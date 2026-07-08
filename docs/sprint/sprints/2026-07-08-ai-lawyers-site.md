@@ -1,18 +1,18 @@
 ---
 id: "2026-07-08-ai-lawyers-site"
-status: dev-complete
-current_role: qa
+status: review
+current_role: planner
 branch: sprint/2026-07-08-ai-lawyers-site
 locked_by: null
 locked_at: null
-last_agent: "claude-code:developer"
-last_updated: 2026-07-08T11:08:03Z
+last_agent: "claude-code:qa"
+last_updated: 2026-07-08T11:17:19Z
 evaluator: custom
 evaluator_command: "bash tests/run_checks.sh"
 total_items: 5
-completed_items: 3
-dev_complete_items: 2
-qa_cycles: 1
+completed_items: 5
+dev_complete_items: 0
+qa_cycles: 2
 prd_sections:
   - sources/AI-for-Lawyers-Workshop-Curriculum.md
 design_sections:
@@ -30,41 +30,11 @@ currently RED (confirmed genuinely red — see Evaluation Notes).
 
 ## Next Steps
 
-(none — Items 4-5 moved to Dev Complete below, pending QA)
+(none — all 5 items completed and QA-verified)
 
 ## Dev Complete
 
-### Item 4 — Gate A: remove unfounded popularity / social-proof claims
-The business has had no sales yet, so nothing may be called "popular" or
-"the choice of most firms."
-- **Files changed:** `index.html` (half-day pricing card, line 674 —
-  deleted the floating `הפופולרי` badge div entirely; reworded trailing
-  sentence to `מאוזן בין עומק לזמן.`), `syllabus/half-day.md` (line 3
-  subtitle: dropped `הפורמט הפופולרי ביותר` -> `פורמט חצי יום`; line 7
-  target-audience opener: dropped the `הבחירה של רוב המשרדים:` lead-in,
-  sentence now starts directly with `קבוצה שכבר מבינה...`),
-  `syllabus/README.md` (line 10: `המסלול המעשי הפופולרי ביותר` ->
-  `המסלול המעשי המלא`).
-- **Commit:** `c784413`.
-- **Result:** `bash tests/run_checks.sh` Gate 5 checks 1-18 = 18/18
-  passed. Re-grepped repo after edits — zero occurrences of `פופולר` or
-  `הבחירה של רוב המשרדים` in `index.html`/`syllabus/**`.
-
-### Item 5 — Gate B: "labs" (מעבדה/מעבדות) -> "workshops" (סדנה/סדנאות)
-- **Files changed:** `index.html:674` (מעבדות מעשיות -> סדנאות מעשיות,
-  same edit as Item 4's card body); `syllabus/README.md:10`;
-  `syllabus/full-day.md` (lines 15, 58, 63, 79); `syllabus/90-min-baby-
-  steps.md:52`; `syllabus/half-day.md` (lines 3, 15, 34, 69). Grammar
-  agreement adjusted per occurrence (מעבדה -> סדנה, מעבדות -> סדנאות,
-  מהמעבדה -> מהסדנה, במעבדות -> בסדנאות). The `תרגול מעשי` heading was
-  left untouched in all 8 syllabus content docs (verified: still present,
-  unchanged) and `tests/check-syllabus.mjs:36` still passes.
-- **Commit:** `c784413`.
-- **Result:** `bash tests/run_checks.sh` Gate 5 checks 19-28 = 10/10
-  passed, including the scoped positive pin (#28) confirming the
-  half-day card now reads `סדנאות` where it used to read `מעבדות`.
-  Re-grepped repo after edits — zero occurrences of `מעבד` in
-  `index.html`/`syllabus/**`.
+(none — Items 4-5 QA-verified and promoted to Completed below)
 
 ## Completed
 
@@ -114,6 +84,69 @@ Files: `CNAME`, `.nojekyll`. Commit: `0ad4112`. Result:
 VERIFIED (2026-07-08):** both files present at repo root; commit `0ad4112`
 confirmed in `git log`. `CNAME` contains exactly `lawyers.nerya.io`;
 `.nojekyll` is 0 bytes.
+
+### Item 4 — Gate A: remove unfounded popularity / social-proof claims
+The business has had no sales yet, so nothing may be called "popular" or
+"the choice of most firms."
+- **Files changed:** `index.html` (half-day pricing card — deleted the
+  floating `הפופולרי` badge div entirely; reworded trailing sentence to
+  `מאוזן בין עומק לזמן.`), `syllabus/half-day.md` (subtitle: dropped
+  `הפורמט הפופולרי ביותר` -> `פורמט חצי יום`; target-audience opener:
+  dropped the `הבחירה של רוב המשרדים:` lead-in, sentence now starts
+  directly with `קבוצה שכבר מבינה...`), `syllabus/README.md` (`המסלול
+  המעשי הפופולרי ביותר` -> `המסלול המעשי המלא`).
+- **Commit:** `c784413`.
+- **QA VERIFIED (2026-07-08, round 2, qa_cycles 2):** independent
+  `grep -rn "פופולר\|הבחירה של רוב המשרדים" index.html syllabus/` →
+  zero matches. Browser-verified via a throwaway `python3 -m http.server`
+  + Claude Preview (Chromium): loaded `index.html`, confirmed
+  `document.body.innerText` contains no `הפופולרי`; inspected the
+  half-day pricing card's DOM node directly — 5 children, none with
+  `position:absolute` (i.e. the badge `<div>` is fully removed, not just
+  emptied of text — no leftover wrapper that could still overlap/clip);
+  screenshotted the card at both desktop and 500×700 widths — clean
+  card, no floating pill, no overlapping/clipped text, body reads "A · B
+  · D · I עם סדנאות מעשיות. מאוזן בין עומק לזמן." Read the full diff
+  hunks in `syllabus/half-day.md`, `syllabus/README.md`, and
+  `index.html:674`'s paragraph — reworded sentences are grammatical,
+  natural Hebrew and make no popularity/adoption claim.
+
+### Item 5 — Gate B: "labs" (מעבדה/מעבדות) -> "workshops" (סדנה/סדנאות)
+- **Files changed:** `index.html` (מעבדות מעשיות -> סדנאות מעשיות, same
+  edit as Item 4's card body); `syllabus/README.md`; `syllabus/full-
+  day.md` (4 occurrences); `syllabus/90-min-baby-steps.md` (1
+  occurrence); `syllabus/half-day.md` (4 occurrences). Grammar agreement
+  adjusted per occurrence (מעבדה -> סדנה, מעבדות -> סדנאות, מהמעבדה ->
+  מהסדנה, במעבדות -> בסדנאות). The `תרגול מעשי` heading was left
+  untouched in all syllabus content docs.
+- **Commit:** `c784413`.
+- **QA VERIFIED (2026-07-08, round 2, qa_cycles 2):** independent
+  `grep -rn "מעבד" index.html syllabus/` → zero matches. Independent
+  `grep -rln "תרגול מעשי" syllabus/` → present in all 8 files (7 content
+  docs + README); Gate 1's per-file positive check for this heading
+  (`tests/check-syllabus.mjs`, required-sections loop) still passes for
+  all 7 content docs, confirming it is genuinely pinned, not just
+  visually present. Browser-verified `document.body.innerText` contains
+  no `מעבד` anywhere on the rendered page. Read every changed hunk in
+  `syllabus/half-day.md` and `syllabus/full-day.md` in full (via `git
+  show c784413`) — each מעבדה->סדנה / מעבדות->סדנאות substitution
+  (including construct-state forms מהמעבדה->מהסדנה and prepositional
+  forms במעבדות->בסדנאות, and gendered count agreement "שלוש מעבדות" ->
+  "שלוש סדנאות") reads as natural, grammatical Hebrew in context — not a
+  mechanical find/replace artifact. Also re-verified the earlier-QA'd
+  Item 2 behavior didn't regress: all 54 module cards present; filter
+  `data-filter="B"` shows exactly 8 B-track cards and reactivates
+  correctly; `data-filter="all"` restores all 54; no console errors, no
+  failed network requests; no horizontal overflow at 375×812 (`scrollW
+  == innerW == 375`, 0 overflowing elements).
+- **QA regression test added:** `tests/check-copy-change.mjs` gained one
+  new structural check (Gate 5 #29) pinning that the half-day card has no
+  leftover `position:absolute` element (i.e. no regrown badge under a
+  *different* wording that would slip past the string-based checks).
+  Mutation-tested: temporarily reinserted a differently-worded badge div
+  outside the working tree's committed history (reverted before
+  committing) and confirmed the new check fails red on it, then restored
+  the file and reran to green. Commit `84e4330` (tests/-only).
 
 ## Evaluation Notes
 
@@ -168,6 +201,68 @@ vacuously. Full suite after additions: 115/115 green.
 
 Verdict: PASS on all 3 items. Status set to `review`, `current_role:
 planner`, `qa_cycles: 1`. No deviations from the brief. No escalations.
+
+**2026-07-08 — QA pass 2 / round 2 (qa_cycles: 2).** Synced to `36bdafd`
+per brief; `git log --oneline -1` confirmed match, no reset needed. Ran
+`bash tests/run_checks.sh` independently: 143/143 (Gate 1: 67/67, Gate 2:
+32/32, Gate 3: 4/4, Gate 4: 12/12, Gate 5: 28/28) before adding a
+regression check. Independent `grep -rn "פופולר\|מעבד\|הבחירה של רוב
+המשרדים" index.html syllabus/` → zero matches (own pass, not reusing
+Dev's reported numbers). Independent `grep -rln "תרגול מעשי" syllabus/`
+→ present in all 8 files; cross-checked against Gate 1's per-file
+positive check for this heading (already existed, still green for all 7
+content docs) rather than assuming grep alone proves the pin holds.
+
+Browser verification (no `.claude/launch.json` existed, so created a
+temporary one pointing `python3 -m http.server` at a scratch port to use
+the Claude Preview tool, then deleted it after — no trace left in git
+status): loaded `index.html`, confirmed via DOM inspection that the
+half-day pricing card (`יום מעשי` / HALF DAY / מ־₪9,500) has exactly 5
+children and zero `position:absolute` descendants — the `הפופולרי` badge
+`<div>` was removed in full, not just its text, so no leftover wrapper
+can overlap/clip. Screenshotted the card at 1280×900 and again at 500×700
+(sharper crop) — clean card, body reads "A · B · D · I עם סדנאות מעשיות.
+מאוזן בין עומק לזמן." with correct RTL, no clipping. `document.body
+.innerText` confirmed to contain neither `הפופולרי` nor `מעבד` anywhere
+on the page. Regression-checked Item 2's earlier-verified behavior: 54
+`[data-track]` cards; `data-filter="B"` button `.click()` narrows to
+exactly 8 visible cards all `data-track="B"` and activates the B button;
+`data-filter="all"` `.click()` restores all 54 and reactivates "הכול";
+zero console logs, zero failed network requests; at 375×812,
+`scrollWidth === innerWidth === 375` with 0 elements overflowing the
+viewport. (Note: the `preview_click` tool's coordinate-based click
+missed the filter buttons after a viewport resize — worked around by
+dispatching a real `.click()` via `preview_eval` instead, which is an
+equally valid triggering of the site's own click handler; not a site
+defect.)
+
+Hebrew coherence spot-check: read every changed hunk in `c784413` for
+`syllabus/half-day.md`, `syllabus/full-day.md`, `syllabus/README.md`,
+`syllabus/90-min-baby-steps.md`, and `index.html` via `git show`. Every
+מעבדה->סדנה / מעבדות->סדנאות substitution (including construct-state
+`מהמעבדה`->`מהסדנה`, prepositional `במעבדות`->`בסדנאות`, and gendered
+count agreement `שלוש מעבדות`->`שלוש סדנאות`) is grammatical and reads
+naturally — no mechanical find/replace breakage. The reworded half-day
+opener, target-audience section, and README line make no popularity/
+adoption claim and read as normal marketing copy.
+
+Regression-test gap found: no existing check pinned the *structural*
+absence of the removed badge element (only text-string absence was
+pinned) — a future edit could re-add a floating badge under different
+wording and slip past every existing check. Added Gate 5 check #29 to
+`tests/check-copy-change.mjs`: scoped to the half-day card block
+(gradient-background open tag to the next card's "FULL DAY" label),
+asserts no `position:absolute` anywhere in that block. Mutation-tested:
+temporarily reinserted a differently-worded badge `<div
+style="position:absolute...">חדש</div>` into `index.html`, reran the
+suite (confirmed check #29 failed red, 143/144), then restored the
+original file byte-for-byte before committing anything (confirmed via
+`git status --porcelain` showing no diff) and reran to green (144/144).
+Committed test-only in `tests/check-copy-change.mjs`, commit `84e4330`.
+
+Verdict: PASS on both items (Gate A and Gate B). Status set to `review`,
+`current_role: planner`, `qa_cycles: 2`, `completed_items: 5`,
+`dev_complete_items: 0`. No deviations from the brief. No escalations.
 
 ## Context Dump
 
