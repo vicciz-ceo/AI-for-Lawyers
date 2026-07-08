@@ -1,17 +1,17 @@
 ---
 id: "2026-07-08-ai-lawyers-site"
-status: planned
-current_role: developer
+status: dev-complete
+current_role: qa
 branch: sprint/2026-07-08-ai-lawyers-site
 locked_by: null
 locked_at: null
-last_agent: "claude-code:planner"
-last_updated: 2026-07-08T11:02:50Z
+last_agent: "claude-code:developer"
+last_updated: 2026-07-08T11:08:03Z
 evaluator: custom
 evaluator_command: "bash tests/run_checks.sh"
 total_items: 5
 completed_items: 3
-dev_complete_items: 0
+dev_complete_items: 2
 qa_cycles: 1
 prd_sections:
   - sources/AI-for-Lawyers-Workshop-Curriculum.md
@@ -30,38 +30,41 @@ currently RED (confirmed genuinely red — see Evaluation Notes).
 
 ## Next Steps
 
-### Item 4 — Gate A: remove unfounded popularity / social-proof claims
-The business has had no sales yet, so nothing may be called "popular" or
-"the choice of most firms."
-- **Acceptance:** zero occurrences of substring `פופולר` in `index.html`
-  and every `syllabus/*.md`; zero occurrences of the phrase `הבחירה של
-  רוב המשרדים` in the same file set (see Context Dump — this phrase
-  exists in TWO places, not just the one the brief called out).
-- **Files affected:** `index.html` (half-day pricing card, ~line 674),
-  `syllabus/half-day.md` (lines 3, 7), `syllabus/README.md` (line 10).
-- **Check:** `tests/check-copy-change.mjs`, checks 1-18 (Gate 5).
-- Reword the half-day card's `הבחירה של רוב המשרדים.` to a truthful
-  value statement — do NOT assert existing customers/adoption.
-
-### Item 5 — Gate B: "labs" (מעבדה/מעבדות) -> "workshops" (סדנה/סדנאות)
-`מעבדה`/`מעבדות` reads as a science laboratory; replace with
-`סדנה`/`סדנאות` everywhere.
-- **Acceptance:** zero occurrences of substring `מעבד` in `index.html`
-  and every `syllabus/*.md`.
-- **Files affected:** `index.html:674`; `syllabus/README.md:10`;
-  `syllabus/full-day.md` (×3); `syllabus/90-min-baby-steps.md:52`;
-  `syllabus/half-day.md` (×4, incl. lines 3, 15, 34, 69).
-- **Constraint:** the required heading `תרגול מעשי` ("hands-on
-  practice") in every syllabus content doc STAYS UNCHANGED — it is a
-  distinct concept, contains no `מעבד` substring, and is pinned by
-  `tests/check-syllabus.mjs:36`. Do not touch that check or heading.
-- **Check:** `tests/check-copy-change.mjs`, checks 19-28 (Gate 5),
-  incl. a scoped positive pin (#28) that the half-day card specifically
-  now reads `סדנאות` in place of `מעבדות`.
+(none — Items 4-5 moved to Dev Complete below, pending QA)
 
 ## Dev Complete
 
-(none — all 3 items promoted to Completed by QA)
+### Item 4 — Gate A: remove unfounded popularity / social-proof claims
+The business has had no sales yet, so nothing may be called "popular" or
+"the choice of most firms."
+- **Files changed:** `index.html` (half-day pricing card, line 674 —
+  deleted the floating `הפופולרי` badge div entirely; reworded trailing
+  sentence to `מאוזן בין עומק לזמן.`), `syllabus/half-day.md` (line 3
+  subtitle: dropped `הפורמט הפופולרי ביותר` -> `פורמט חצי יום`; line 7
+  target-audience opener: dropped the `הבחירה של רוב המשרדים:` lead-in,
+  sentence now starts directly with `קבוצה שכבר מבינה...`),
+  `syllabus/README.md` (line 10: `המסלול המעשי הפופולרי ביותר` ->
+  `המסלול המעשי המלא`).
+- **Commit:** `c784413`.
+- **Result:** `bash tests/run_checks.sh` Gate 5 checks 1-18 = 18/18
+  passed. Re-grepped repo after edits — zero occurrences of `פופולר` or
+  `הבחירה של רוב המשרדים` in `index.html`/`syllabus/**`.
+
+### Item 5 — Gate B: "labs" (מעבדה/מעבדות) -> "workshops" (סדנה/סדנאות)
+- **Files changed:** `index.html:674` (מעבדות מעשיות -> סדנאות מעשיות,
+  same edit as Item 4's card body); `syllabus/README.md:10`;
+  `syllabus/full-day.md` (lines 15, 58, 63, 79); `syllabus/90-min-baby-
+  steps.md:52`; `syllabus/half-day.md` (lines 3, 15, 34, 69). Grammar
+  agreement adjusted per occurrence (מעבדה -> סדנה, מעבדות -> סדנאות,
+  מהמעבדה -> מהסדנה, במעבדות -> בסדנאות). The `תרגול מעשי` heading was
+  left untouched in all 8 syllabus content docs (verified: still present,
+  unchanged) and `tests/check-syllabus.mjs:36` still passes.
+- **Commit:** `c784413`.
+- **Result:** `bash tests/run_checks.sh` Gate 5 checks 19-28 = 10/10
+  passed, including the scoped positive pin (#28) confirming the
+  half-day card now reads `סדנאות` where it used to read `מעבדות`.
+  Re-grepped repo after edits — zero occurrences of `מעבד` in
+  `index.html`/`syllabus/**`.
 
 ## Completed
 
@@ -118,6 +121,23 @@ All 3 items QA-verified and promoted to Completed. Full authoritative pass
 (QA's independent run): `bash tests/run_checks.sh` → 115/115 checks passed
 (Gate 1: 67/67, Gate 2: 32/32, Gate 3: 4/4, Gate 4 [new QA regression]:
 12/12). No deviations from the brief; no escalations raised.
+
+**Round 2 — Developer pass (2026-07-08, Items 4-5, commit `c784413`).**
+Synced to `56e0535` per brief; confirmed via `git log --oneline -1` before
+starting. Baseline `bash tests/run_checks.sh`: 132/143 (Gate 5 17/28,
+11 genuinely red on the strings named in the contract). Re-grepped
+`מעבד|פופולר|הבחירה של רוב המשרדים` across `index.html`/`syllabus/`
+before editing and confirmed it matched the contract's occurrence list
+exactly (index.html:674; syllabus/README.md:10; syllabus/half-day.md
+lines 3/7/15/34/69; syllabus/full-day.md lines 15/58/63/79;
+syllabus/90-min-baby-steps.md:52) — no surprises. Made all 5 files'
+edits (Gate A wording + Gate B rename), then re-ran the same grep post-
+edit: zero hits anywhere in `index.html`/`syllabus/**`. Final
+`bash tests/run_checks.sh`: 143/143 (Gate 1: 67/67, Gate 2: 32/32,
+Gate 3: 4/4, Gate 4: 12/12, Gate 5: 28/28 — including scoped positive
+pin #28). Confirmed `תרגול מעשי` heading unchanged in all 8 syllabus
+docs and `tests/check-syllabus.mjs:36` still passes. No `tests/**` files
+touched. No deviations from the brief; no escalations raised.
 
 ## QA Notes
 
